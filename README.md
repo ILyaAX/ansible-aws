@@ -8,9 +8,9 @@ You need to create a 'pass' file with an arbitrary password in the root folder o
 You also need to create a file 'aws_credentials.yml', in which you specify for the AWS user:
 ```
 aws_access_key: '<YOUR_CREDENTIAL>'
-aws_secret_key: '<YOUR_CREDENTIAL_key>'
+aws_secret_key: '<YOUR_CREDENTIAL>'
 ```
-encrypt it:
+encrypt it using the password in the 'pass' file:
 ```
-ansible-vault encrypt aws_credentials.yml
+ansible-vault encrypt aws_credentials.yml --vault-pass-file pass
 ```
