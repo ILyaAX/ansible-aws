@@ -13,5 +13,5 @@ aws_secret_key: '<YOUR_CREDENTIAL>'
 ```
 encrypt it using the password in the 'pass' file:
 ```
-ansible-vault encrypt aws_credentials.yml --vault-pass-file pass
+ansible-vault encrypt aws_credentials.yml --vault-password-file pass
 ```

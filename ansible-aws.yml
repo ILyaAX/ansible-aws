@@ -10,7 +10,7 @@
     - region: 'us-east-1'
     - instance_name:
       - 'server_build'
-      - 'server_prod'
+#      - 'server_prod'
 
   tasks:
 
@@ -28,7 +28,7 @@
 
     - name: Info instance
       ec2_instance_info:
-        region: us-east-1
+        region: '{{ region }}'
       register: ec2_info
 
     - name: show Info
