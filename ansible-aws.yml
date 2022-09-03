@@ -1,0 +1,20 @@
+---
+- name: Working with AWS EC2 Instance
+  hosts: localhost
+
+  tasks:
+
+    - name: Create ec2 instance
+      ec2:
+        instance_type: t2.micro
+        image: ami-052efd3df9dad4825
+#        count: 1
+        key_name: AWS_ax
+        group: allow-all
+        wait: true
+        region: us-east-1
+        instance_tags:
+          Name: '{{ item }}'
+      with_items:
+        - server_build
+        - server_prod
