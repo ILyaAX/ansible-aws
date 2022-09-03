@@ -28,6 +28,8 @@
 
     - name: Info instance
       ec2_instance_info:
+        aws_access_key: '{{ aws_access_key }}'
+        aws_secret_key: '{{ aws_secret_key }}'
         region: '{{ region }}'
       register: ec2_info
 
