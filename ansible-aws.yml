@@ -1,23 +1,30 @@
 ---
 - name: Working with AWS EC2 Instance
   hosts: localhost
+  vars_files:
+    - aws_credentials.yml
+  vars:
+    - instance_type: 't2.micro'
+    - instance_image: 'ami-052efd3df9dad4825'
+    - AWS_key: 'AWS_ax'
+    - region: 'us-east-1'
+    - instance_name:
+      - 'server_build'
+      - 'server_prod'
 
   tasks:
 
     - name: Create ec2 instance
-      ec2:
-        instance_type: t2.micro
-        image: ami-052efd3df9dad4825
+      ec2_instance:
+        aws_access_key: '{{ aws_access_key }}'
+        aws_secret_key: '{{ aws_secret_key }}'
+        instance_type: '{{ instance_type }}'
+        image: '{{ instance_image }}'
 #        count: 1
-        key_name: AWS_ax
-        group: allow-all
+        key_name: '{{ AWS_key }}'
         wait: true
-        region: us-east-1
-        instance_tags:
-          Name: '{{ item }}'
-      with_items:
-        - server_build
-        - server_prod
+        region: '{{ region }}'
+        name: '{{ instance_name }}'
 
     - name: Info instance
       ec2_instance_info:
