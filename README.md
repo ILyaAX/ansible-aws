@@ -15,3 +15,12 @@ encrypt it using the password in the 'pass' file:
 ```
 ansible-vault encrypt aws_credentials.yml --vault-password-file pass
 ```
+You may also need to install pip and boto3:
+```
+sudo apt install python3-pip
+sudo pip install boto3
+```
+
+```
+ansible-playbook ansible-aws --vault-password-file pass
+```

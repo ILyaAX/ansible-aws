@@ -23,7 +23,7 @@
         region: '{{ region }}'
         name: '{{ item }}'
       with_items:
-        - bild
+        - build
         - prod
 
     - name: Info instance
