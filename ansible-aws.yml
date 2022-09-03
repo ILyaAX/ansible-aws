@@ -8,9 +8,6 @@
     - instance_image: 'ami-052efd3df9dad4825'
     - AWS_key: 'AWS_ax'
     - region: 'us-east-1'
-    - instance_name:
-      - 'server_build'
-#      - 'server_prod'
 
   tasks:
 
@@ -24,7 +21,10 @@
         key_name: '{{ AWS_key }}'
         wait: true
         region: '{{ region }}'
-        name: '{{ instance_name }}'
+        name: '{{ item }}'
+      with_items:
+        - bild
+        - prod
 
     - name: Info instance
       ec2_instance_info:
