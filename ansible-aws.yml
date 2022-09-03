@@ -19,7 +19,7 @@
         aws_access_key: '{{ aws_access_key }}'
         aws_secret_key: '{{ aws_secret_key }}'
         instance_type: '{{ instance_type }}'
-        image: '{{ instance_image }}'
+        image_id: '{{ instance_image }}'
 #        count: 1
         key_name: '{{ AWS_key }}'
         wait: true
