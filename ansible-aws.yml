@@ -18,3 +18,12 @@
       with_items:
         - server_build
         - server_prod
+
+    - name: Info instance
+      ec2_instance_info:
+        region: us-east-1
+      register: ec2_info
+
+    - name: show Info
+      ansible.builtin.debug:
+        var: ec2_info
