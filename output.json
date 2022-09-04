@@ -1,0 +1,281 @@
+ok: [localhost] => {
+    "changed": false,
+    "ec2_info": {
+        "changed": false,
+        "failed": false,
+        "instances": [
+            {
+                "ami_launch_index": 0,
+                "architecture": "x86_64",
+                "block_device_mappings": [
+                    {
+                        "device_name": "/dev/sda1",
+                        "ebs": {
+                            "attach_time": "2022-09-04T05:50:09+00:00",
+                            "delete_on_termination": true,
+                            "status": "attached",
+                            "volume_id": "vol-0e8836c7c5ff81c01"
+                        }
+                    }
+                ],
+                "capacity_reservation_specification": {
+                    "capacity_reservation_preference": "open"
+                },
+                "client_token": "71b708fb962149c4bf1228523541cff9",
+                "cpu_options": {
+                    "core_count": 1,
+                    "threads_per_core": 1
+                },
+                "ebs_optimized": false,
+                "ena_support": true,
+                "enclave_options": {
+                    "enabled": false
+                },
+                "hibernation_options": {
+                    "configured": false
+                },
+                "hypervisor": "xen",
+                "image_id": "ami-052efd3df9dad4825",
+                "instance_id": "i-0490293f4099f5670",
+                "instance_type": "t2.micro",
+                "key_name": "aws_test_key",
+                "launch_time": "2022-09-04T05:50:09+00:00",
+                "maintenance_options": {
+                    "auto_recovery": "default"
+                },
+                "metadata_options": {
+                    "http_endpoint": "enabled",
+                    "http_protocol_ipv6": "disabled",
+                    "http_put_response_hop_limit": 1,
+                    "http_tokens": "optional",
+                    "instance_metadata_tags": "disabled",
+                    "state": "applied"
+                },
+                "monitoring": {
+                    "state": "disabled"
+                },
+                "network_interfaces": [
+                    {
+                        "association": {
+                            "ip_owner_id": "amazon",
+                            "public_dns_name": "ec2-18-206-153-244.compute-1.amazonaws.com",
+                            "public_ip": "18.206.153.244"
+                        },
+                        "attachment": {
+                            "attach_time": "2022-09-04T05:50:09+00:00",
+                            "attachment_id": "eni-attach-04f36e733dc312354",
+                            "delete_on_termination": true,
+                            "device_index": 0,
+                            "network_card_index": 0,
+                            "status": "attached"
+                        },
+                        "description": "",
+                        "groups": [
+                            {
+                                "group_id": "sg-0792b7bf1d066fb0e",
+                                "group_name": "default"
+                            }
+                        ],
+                        "interface_type": "interface",
+                        "ipv6_addresses": [],
+                        "mac_address": "02:ef:ce:50:59:73",
+                        "network_interface_id": "eni-0c14677a1b72e0d8a",
+                        "owner_id": "139080729692",
+                        "private_dns_name": "ip-172-31-9-171.ec2.internal",
+                        "private_ip_address": "172.31.9.171",
+                        "private_ip_addresses": [
+                            {
+                                "association": {
+                                    "ip_owner_id": "amazon",
+                                    "public_dns_name": "ec2-18-206-153-244.compute-1.amazonaws.com",
+                                    "public_ip": "18.206.153.244"
+                                },
+                                "primary": true,
+                                "private_dns_name": "ip-172-31-9-171.ec2.internal",
+                                "private_ip_address": "172.31.9.171"
+                            }
+                        ],
+                        "source_dest_check": true,
+                        "status": "in-use",
+                        "subnet_id": "subnet-07a16bb2daa75c563",
+                        "vpc_id": "vpc-081b683c95016d435"
+                    }
+                ],
+                "placement": {
+                    "availability_zone": "us-east-1a",
+                    "group_name": "",
+                    "tenancy": "default"
+                },
+                "platform_details": "Linux/UNIX",
+                "private_dns_name": "ip-172-31-9-171.ec2.internal",
+                "private_dns_name_options": {
+                    "enable_resource_name_dns_a_record": false,
+                    "enable_resource_name_dns_aaaa_record": false,
+                    "hostname_type": "ip-name"
+                },
+                "private_ip_address": "172.31.9.171",
+                "product_codes": [],
+                "public_dns_name": "ec2-18-206-153-244.compute-1.amazonaws.com",
+                "public_ip_address": "18.206.153.244",
+                "root_device_name": "/dev/sda1",
+                "root_device_type": "ebs",
+                "security_groups": [
+                    {
+                        "group_id": "sg-0792b7bf1d066fb0e",
+                        "group_name": "default"
+                    }
+                ],
+                "source_dest_check": true,
+                "state": {
+                    "code": 16,
+                    "name": "running"
+                },
+                "state_transition_reason": "",
+                "subnet_id": "subnet-07a16bb2daa75c563",
+                "tags": {
+                    "Name": "build"
+                },
+                "usage_operation": "RunInstances",
+                "usage_operation_update_time": "2022-09-04T05:50:09+00:00",
+                "virtualization_type": "hvm",
+                "vpc_id": "vpc-081b683c95016d435"
+            },
+            {
+                "ami_launch_index": 0,
+                "architecture": "x86_64",
+                "block_device_mappings": [
+                    {
+                        "device_name": "/dev/sda1",
+                        "ebs": {
+                            "attach_time": "2022-09-04T05:53:02+00:00",
+                            "delete_on_termination": true,
+                            "status": "attached",
+                            "volume_id": "vol-07bcc2df6ed2d71e7"
+                        }
+                    }
+                ],
+                "capacity_reservation_specification": {
+                    "capacity_reservation_preference": "open"
+                },
+                "client_token": "43ffa416186f4cb8a5cf65bc4bdd1da4",
+                "cpu_options": {
+                    "core_count": 1,
+                    "threads_per_core": 1
+                },
+                "ebs_optimized": false,
+                "ena_support": true,
+                "enclave_options": {
+                    "enabled": false
+                },
+                "hibernation_options": {
+                    "configured": false
+                },
+                "hypervisor": "xen",
+                "image_id": "ami-052efd3df9dad4825",
+                "instance_id": "i-0fd163e4a584c4dfa",
+                "instance_type": "t2.micro",
+                "key_name": "aws_test_key",
+                "launch_time": "2022-09-04T05:53:01+00:00",
+                "maintenance_options": {
+                    "auto_recovery": "default"
+                },
+                "metadata_options": {
+                    "http_endpoint": "enabled",
+                    "http_protocol_ipv6": "disabled",
+                    "http_put_response_hop_limit": 1,
+                    "http_tokens": "optional",
+                    "instance_metadata_tags": "disabled",
+                    "state": "applied"
+                },
+                "monitoring": {
+                    "state": "disabled"
+                },
+                "network_interfaces": [
+                    {
+                        "association": {
+                            "ip_owner_id": "amazon",
+                            "public_dns_name": "ec2-3-235-42-200.compute-1.amazonaws.com",
+                            "public_ip": "3.235.42.200"
+                        },
+                        "attachment": {
+                            "attach_time": "2022-09-04T05:53:01+00:00",
+                            "attachment_id": "eni-attach-0adefc81a31449300",
+                            "delete_on_termination": true,
+                            "device_index": 0,
+                            "network_card_index": 0,
+                            "status": "attached"
+                        },
+                        "description": "",
+                        "groups": [
+                            {
+                                "group_id": "sg-0792b7bf1d066fb0e",
+                                "group_name": "default"
+                            }
+                        ],
+                        "interface_type": "interface",
+                        "ipv6_addresses": [],
+                        "mac_address": "02:54:c9:f8:90:b7",
+                        "network_interface_id": "eni-05f37440da08e7302",
+                        "owner_id": "139080729692",
+                        "private_dns_name": "ip-172-31-3-208.ec2.internal",
+                        "private_ip_address": "172.31.3.208",
+                        "private_ip_addresses": [
+                            {
+                                "association": {
+                                    "ip_owner_id": "amazon",
+                                    "public_dns_name": "ec2-3-235-42-200.compute-1.amazonaws.com",
+                                    "public_ip": "3.235.42.200"
+                                },
+                                "primary": true,
+                                "private_dns_name": "ip-172-31-3-208.ec2.internal",
+                                "private_ip_address": "172.31.3.208"
+                            }
+                        ],
+                        "source_dest_check": true,
+                        "status": "in-use",
+                        "subnet_id": "subnet-07a16bb2daa75c563",
+                        "vpc_id": "vpc-081b683c95016d435"
+                    }
+                ],
+                "placement": {
+                    "availability_zone": "us-east-1a",
+                    "group_name": "",
+                    "tenancy": "default"
+                },
+                "platform_details": "Linux/UNIX",
+                "private_dns_name": "ip-172-31-3-208.ec2.internal",
+                "private_dns_name_options": {
+                    "enable_resource_name_dns_a_record": false,
+                    "enable_resource_name_dns_aaaa_record": false,
+                    "hostname_type": "ip-name"
+                },
+                "private_ip_address": "172.31.3.208",
+                "product_codes": [],
+                "public_dns_name": "ec2-3-235-42-200.compute-1.amazonaws.com",
+                "public_ip_address": "3.235.42.200",
+                "root_device_name": "/dev/sda1",
+                "root_device_type": "ebs",
+                "security_groups": [
+                    {
+                        "group_id": "sg-0792b7bf1d066fb0e",
+                        "group_name": "default"
+                    }
+                ],
+                "source_dest_check": true,
+                "state": {
+                    "code": 16,
+                    "name": "running"
+                },
+                "state_transition_reason": "",
+                "subnet_id": "subnet-07a16bb2daa75c563",
+                "tags": {
+                    "Name": "prod"
+                },
+                "usage_operation": "RunInstances",
+                "usage_operation_update_time": "2022-09-04T05:53:01+00:00",
+                "virtualization_type": "hvm",
+                "vpc_id": "vpc-081b683c95016d435"
+            }
+        ]
+    }
+}

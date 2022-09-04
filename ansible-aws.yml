@@ -1,5 +1,5 @@
 ---
-- name: Working with AWS EC2 Instance
+- name: Provision AWS EC2 Instances
   hosts: localhost
   vars_files:
     - aws_credentials.yml
@@ -21,9 +21,9 @@
     - name: Save private key
       copy: 
         content: '{{ key_info.key.private_key }}' 
-        dest: './aws_test_key'
+        dest: '{{ ansible_user_dir }}/.ssh/aws_test_key'
         mode: 0600
-#      when: key_info.changed
+      when: key_info.changed
 
     - name: show key_info
       ansible.builtin.debug:
@@ -35,21 +35,17 @@
         aws_secret_key: '{{ aws_secret_key }}'
         instance_type: '{{ instance_type }}'
         image_id: '{{ instance_image }}'
-#        count: 1
         key_name: 'aws_test_key'
-#        wait: true
         region: '{{ region }}'
-        name: '{{ item }}'
-      with_items:
-        - build
-        - prod
-
-    - name: Info instance
-      ec2_instance_info:
-        aws_access_key: '{{ aws_access_key }}'
-        aws_secret_key: '{{ aws_secret_key }}'
-        region: '{{ region }}'
+        count: 2
       register: ec2_info
+
+#    - name: Info instance
+#      ec2_instance_info:
+#        aws_access_key: '{{ aws_access_key }}'
+#        aws_secret_key: '{{ aws_secret_key }}'
+#        region: '{{ region }}'
+#      register: ec2_info
 
     - name: show Info
       ansible.builtin.debug:
