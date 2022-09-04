@@ -18,6 +18,13 @@
         region: '{{ region }}'
       register: key_info
 
+    - name: Save private key
+      copy: 
+        content: '{{ key_info.key.private_key }}' 
+        dest: '.ssh/id_rsa' 
+        mode: 0600
+      when: key_info.changed
+
     - name: show key_info
       ansible.builtin.debug:
         var: key_info
