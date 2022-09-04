@@ -60,13 +60,6 @@
         group: 'aws-test-group'
       register: ec2_info
 
-#    - name: Info instance
-#      ec2_instance_info:
-#        aws_access_key: '{{ aws_access_key }}'
-#        aws_secret_key: '{{ aws_secret_key }}'
-#        region: '{{ region }}'
-#      register: ec2_info
-
     - name: show Info
       ansible.builtin.debug:
         var: ec2_info
@@ -83,17 +76,9 @@
         groupname: prod
         ansible_ssh_private_key_file: '{{ ansible_user_dir }}/.ssh/aws_test_key'
 
-#    - name: wait ssh
-#      wait_for:
-#        host: '{{ item }}'
-#        port: 22
-#        state: started
-#      with_items:
-#        - 'build'
-#        - 'prod'
-    - name: Sleep for 150 seconds and continue with play
+    - name: Sleep for 120 seconds and continue with play
       ansible.builtin.wait_for:
-        timeout: 150
+        timeout: 120
 
 - name: Preparing the build-node
   hosts: '{{ instanse }}'
