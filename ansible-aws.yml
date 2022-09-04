@@ -16,6 +16,11 @@
         aws_access_key: '{{ aws_access_key }}'
         aws_secret_key: '{{ aws_secret_key }}'
         region: '{{ region }}'
+      register: key_info
+
+    - name: show key_info
+      ansible.builtin.debug:
+        var: key_info
 
     - name: Create ec2 instance
       ec2_instance:
