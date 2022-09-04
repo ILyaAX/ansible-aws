@@ -21,9 +21,9 @@
     - name: Save private key
       copy: 
         content: '{{ key_info.key.private_key }}' 
-        dest: '$HOME/.ssh/aws_test_key'
+        dest: './aws_test_key'
         mode: 0600
-      when: key_info.changed
+#      when: key_info.changed
 
     - name: show key_info
       ansible.builtin.debug:
@@ -31,6 +31,8 @@
 
     - name: Create ec2 instance
       ec2_instance:
+        aws_access_key: '{{ aws_access_key }}'
+        aws_secret_key: '{{ aws_secret_key }}'
         instance_type: '{{ instance_type }}'
         image_id: '{{ instance_image }}'
 #        count: 1
