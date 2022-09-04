@@ -29,12 +29,12 @@
       ansible.builtin.debug:
         var: key_info
 
-    - name: Create ec2 instance
-      ec2_instance:
+    - name: Create ec2 Instances
+      ec2:
         aws_access_key: '{{ aws_access_key }}'
         aws_secret_key: '{{ aws_secret_key }}'
         instance_type: '{{ instance_type }}'
-        image_id: '{{ instance_image }}'
+        image: '{{ instance_image }}'
         key_name: 'aws_test_key'
         region: '{{ region }}'
         count: 2
