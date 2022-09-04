@@ -75,22 +75,22 @@
       add_host:
         hostname: '{{ ec2_info.instances[0].public_ip }}'
         groupname: build
-        private_key_file: '{{ ansible_user_dir }}/.ssh/aws_test_key'
+        ansible_ssh_private_key_file: '{{ ansible_user_dir }}/.ssh/aws_test_key'
 
     - name: Create memory inventory to prod instance
       add_host:
         hostname: '{{ ec2_info.instances[1].public_ip }}'
         groupname: prod
-        private_key_file: '{{ ansible_user_dir }}/.ssh/aws_test_key'
+        ansible_ssh_private_key_file: '{{ ansible_user_dir }}/.ssh/aws_test_key'
 
-    - name: wait ssh
-      wait_for:
-        host: '{{ item }}'
-        port: 22
-        state: started
-      with_items:
-        - 'build'
-        - 'prod'
+#    - name: wait ssh
+#      wait_for:
+#        host: '{{ item }}'
+#        port: 22
+#        state: started
+#      with_items:
+#        - 'build'
+#        - 'prod'
 
 - name: Preparing the build-node
   hosts: '{{ instanse }}'
