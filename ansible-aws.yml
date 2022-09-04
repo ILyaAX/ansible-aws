@@ -6,20 +6,23 @@
   vars:
     - instance_type: 't2.micro'
     - instance_image: 'ami-052efd3df9dad4825'
-    - AWS_key: 'AWS_ax'
     - region: 'us-east-1'
 
   tasks:
+    
+    - name: Create a new ec2 key
+      amazon.aws.ec2_key:
+        name: aws_test_key
+        aws_access_key: '{{ aws_access_key }}'
+        aws_secret_key: '{{ aws_secret_key }}'
 
     - name: Create ec2 instance
       ec2_instance:
-        aws_access_key: '{{ aws_access_key }}'
-        aws_secret_key: '{{ aws_secret_key }}'
         instance_type: '{{ instance_type }}'
         image_id: '{{ instance_image }}'
 #        count: 1
-        key_name: '{{ AWS_key }}'
-        wait: true
+        key_name: aws_test_key
+#        wait: true
         region: '{{ region }}'
         name: '{{ item }}'
       with_items:
