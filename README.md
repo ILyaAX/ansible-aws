@@ -22,6 +22,7 @@ sudo pip install boto3
 ansible-galaxy collection install amazon.aws
 ```
 
+<i>Start:</i>
 ```
 ansible-playbook ansible-aws --vault-password-file pass
 ```
