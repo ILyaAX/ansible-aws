@@ -25,9 +25,26 @@
         mode: 0600
       when: key_info.changed
 
-    - name: show key_info
+    - name: Show key_info
       ansible.builtin.debug:
         var: key_info
+
+    - name: Provision security group
+      ec2_group:
+        aws_access_key: '{{ aws_access_key }}'
+        aws_secret_key: '{{ aws_secret_key }}'
+        name: 'aws-test-group'
+        region: '{{ region }}'
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 10.0.0.0/8
+          - proto: tcp
+            from_port: 8080
+            to_port: 8080
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow all on port 22 80 8080
 
     - name: Create ec2 Instances
       ec2:
@@ -38,6 +55,8 @@
         key_name: 'aws_test_key'
         region: '{{ region }}'
         count: 2
+        wait: true
+        group: 'aws-test-group'
       register: ec2_info
 
 #    - name: Info instance
