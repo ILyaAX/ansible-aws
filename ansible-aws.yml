@@ -35,6 +35,7 @@
         aws_secret_key: '{{ aws_secret_key }}'
         name: 'aws-test-group'
         region: '{{ region }}'
+        description: 'aws-test-group allow all on port 22 8080'
         rules:
           - proto: tcp
             from_port: 22
