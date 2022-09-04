@@ -12,7 +12,7 @@
     
     - name: Create a new ec2 key
       amazon.aws.ec2_key:
-        name: aws_test_key
+        name: 'aws_test_key'
         aws_access_key: '{{ aws_access_key }}'
         aws_secret_key: '{{ aws_secret_key }}'
 
@@ -21,7 +21,7 @@
         instance_type: '{{ instance_type }}'
         image_id: '{{ instance_image }}'
 #        count: 1
-        key_name: aws_test_key
+        key_name: 'aws_test_key'
 #        wait: true
         region: '{{ region }}'
         name: '{{ item }}'
