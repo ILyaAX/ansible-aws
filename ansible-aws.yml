@@ -129,6 +129,7 @@
 
 - name: Preparing the prod-node
   hosts: '{{ instanse }}'
+  remote_user: ubuntu
   become: true
   vars:
     instanse: prod
