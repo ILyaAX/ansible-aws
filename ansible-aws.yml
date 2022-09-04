@@ -81,6 +81,9 @@
         hostname: '{{ ec2_info.instances[1].public_ip }}'
         groupname: prod
 
+    - name: Add ssh-key
+      shell: 'ssh-add ~/.ssh/aws_test_key'
+
     - name: wait ssh
       wait_for:
         host: '{{ item }}'
