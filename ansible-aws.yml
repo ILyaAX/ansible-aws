@@ -21,7 +21,7 @@
     - name: Save private key
       copy: 
         content: '{{ key_info.key.private_key }}' 
-        dest: '.ssh/aws_test_key'
+        dest: '$HOME/.ssh/aws_test_key'
         mode: 0600
       when: key_info.changed
 
