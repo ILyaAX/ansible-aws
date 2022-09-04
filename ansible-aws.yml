@@ -95,7 +95,7 @@
   remote_user: ubuntu
   become: true
   vars:
-    : build
+    instanse: build
     repository: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
     package:
       - 'default-jdk'
