@@ -91,6 +91,9 @@
 #      with_items:
 #        - 'build'
 #        - 'prod'
+    - name: Sleep for 150 seconds and continue with play
+      ansible.builtin.wait_for:
+        timeout: 150
 
 - name: Preparing the build-node
   hosts: '{{ instanse }}'
@@ -98,7 +101,6 @@
   become: true
   vars:
     instanse: build
-    private_key_file: '{{ ansible_user_dir }}/.ssh/aws_test_key'
     repository: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
     package:
       - 'default-jdk'
@@ -136,7 +138,6 @@
   become: true
   vars:
     instanse: prod
-    private_key_file: '{{ ansible_user_dir }}/.ssh/aws_test_key'
     package: 'tomcat9'
     app_path: '/opt/app/hello-1.0.war'
     web_path: '/var/lib/tomcat9/webapps/hello-1.0.war'
