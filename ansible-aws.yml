@@ -40,7 +40,7 @@
           - proto: tcp
             from_port: 22
             to_port: 22
-            cidr_ip: 10.0.0.0/8
+            cidr_ip: 0.0.0.0/0
           - proto: tcp
             from_port: 8080
             to_port: 8080
@@ -70,3 +70,91 @@
     - name: show Info
       ansible.builtin.debug:
         var: ec2_info
+
+    - name: Create memory inventory to build instance
+      add_host:
+        hostname: '{{ ec2_info.instances[0].public_ip }}'
+        groupname: build
+
+    - name: create ssh group for connect to build instance
+      add_host:
+        hostname: '{{ ec2_info.instances[1].public_ip }}'
+        groupname: prod
+
+    - name: wait ssh
+      wait_for:
+        host: '{{ item }}'
+        port: 22
+        state: started
+      with_items:
+        - 'build'
+        - 'prod'
+
+- name: Preparing the build-node
+  hosts: '{{ instanse }}'
+  remote_user: ubuntu
+  become: true
+  vars:
+    : build
+    repository: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+    package:
+      - 'default-jdk'
+      - 'maven'
+      - 'git'
+    workdir: '/opt/app'
+
+  tasks:
+  - name: Make sure the packages are present
+    apt:
+      name: '{{ package }}'
+      state: present
+      cache_valid_time: 10000
+
+  - name: Fetch application on git
+    git:
+      repo: '{{ repository }}'
+      dest: '{{ workdir }}'
+
+  - name: build webapp
+    shell: mvn clean package
+    args:
+      chdir: '{{ workdir }}'
+
+  - name: Fetch webapp-file
+    fetch:
+      src: '{{ workdir }}/target/hello-1.0.war'
+      dest: '{{ workdir }}/hello-1.0.war'
+      flat: yes
+
+
+- name: Preparing the prod-node
+  hosts: '{{ instanse }}'
+  become: true
+  vars:
+    instanse: prod
+    package: 'tomcat9'
+    app_path: '/opt/app/hello-1.0.war'
+    web_path: '/var/lib/tomcat9/webapps/hello-1.0.war'
+  tasks:
+
+    - name: Ensure the package is present
+      apt:
+        name: '{{ package }}'
+        state: present
+        cache_valid_time: 10000
+
+    - name: Copy webapp-file
+      copy:
+        src: '{{ app_path }}'
+        dest: '{{ web_path }}'
+
+    - name: Ensure tomcat is started
+      service:
+        name: '{{ package }}'
+        state: started
+
+    - name: Clear source
+      file:
+        state: absent
+        path: '{{ app_path }}'
+      delegate_to: localhost
